@@ -77,7 +77,7 @@ def gen_phy_file(seqs):
     return content
 
 # Generate mega file
-def gen_megfile(seqs):
+def gen_meg_file(seqs):
     content = '#Mega\ntitle Seqs\n\n'
     for n in seqs:
         content += '#%s\n%s\n' % (n, seqs[n])
@@ -85,7 +85,7 @@ def gen_megfile(seqs):
 
 
 # Generate seq file
-def gen_seqfile(seqs):
+def gen_seq_file(seqs):
     content = ''
     for name in seqs:
         seq = seqs[name]
