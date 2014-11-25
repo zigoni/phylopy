@@ -76,3 +76,25 @@ def gen_phy_file(seqs):
         content += '%s%s\n' % (formatted_name, seq)
     return content
 
+# Generate mega file
+def gen_megfile(seqs):
+    content = '#Mega\ntitle Seqs\n\n'
+    for n in seqs:
+        content += '#%s\n%s\n' % (n, seqs[n])
+    return content
+
+
+# Generate seq file
+def gen_seqfile(seqs):
+    content = ''
+    for name in seqs:
+        seq = seqs[name]
+        content += '%s%s\n' % (name.ljust(10), seq)
+    return content
+
+
+# Write formatted sequences file
+def write_file(file_type, file_name, seqs):
+    func_name = 'gen_%s_file' % file_type
+    content = eval(func_name)(seqs)
+    open(file_name, 'w').write(content)
