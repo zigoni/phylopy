@@ -1,6 +1,7 @@
 import re
 import sys
 from collections import OrderedDict
+from seq import gap2missing
 
 
 # Read list file
