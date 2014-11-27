@@ -15,7 +15,7 @@ def read_list_file(list_file):
 
 
 # Read sequence file
-def read_seq_file(seq_file, excluding_list=()):
+def read_seq_file(seq_file, missing=True, excluding_list=()):
     seqs = []
     pattern = r'^([\w\.-]+)\s+([\?ATGCRYKSMWBVDHN-]+)$'
     reg = re.compile(pattern)
@@ -35,7 +35,8 @@ def read_seq_file(seq_file, excluding_list=()):
             y = s.group(2)
             if x in excluding_list:
                 continue
-            y = gap2missing(y)
+            if missing:
+                y = gap2missing(y)
             seqs.append((x, y))
         else:
             raise Exception('Unexpected content in file %s line %d' % (seq_file, j))
