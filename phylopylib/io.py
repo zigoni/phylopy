@@ -94,6 +94,14 @@ def gen_seq_file(seqs):
     return content
 
 
+# Generate fasta file
+def gen_fas_file(seqs):
+    content = ''
+    for name in seqs:
+        seq = seqs[name]
+        content += '>%s\n%s\n' % (name, seq)
+    return content
+
 # Write formatted sequences file
 def write_file(file_type, file_name, seqs):
     func_name = 'gen_%s_file' % file_type
