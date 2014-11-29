@@ -18,6 +18,7 @@ def gap2missing(seq):
     return seq
 
 
+# Delete gaps
 def delete_gap(seqs):
     seq_length = len(list(seqs.values())[0])
     seq_num = len(seqs)
@@ -30,3 +31,10 @@ def delete_gap(seqs):
             for n in seqs:
                 r_seqs[n] += seqs[n][i]
     return r_seqs
+
+
+# RY-encode
+def ry_encode(seq):
+    seq = seq.replace('G', 'A')
+    seq = seq.replace('T', 'C')
+    return seq
