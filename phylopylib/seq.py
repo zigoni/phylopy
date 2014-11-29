@@ -38,3 +38,17 @@ def ry_encode(seq):
     seq = seq.replace('G', 'A')
     seq = seq.replace('T', 'C')
     return seq
+
+
+# Split codons
+def split_codons(seqs, offset=0):
+    r_seqs = [OrderedDict(), OrderedDict(), OrderedDict()]
+    seq_length = len(list(seqs.values())[0])
+    for i in range(seq_length):
+        m = (i + 3 - offset) % 3
+        for n in seqs:
+            if n in r_seqs[m]:
+                r_seqs[m][n] += seqs[n][i]
+            else:
+                r_seqs[m][n] = seqs[n][i]
+    return r_seqs
