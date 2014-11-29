@@ -19,7 +19,7 @@ def gap2missing(seq):
 
 
 # Delete gaps
-def delete_gap(seqs):
+def delete_gaps(seqs):
     seq_length = len(list(seqs.values())[0])
     seq_num = len(seqs)
     r_seqs = OrderedDict(zip(seqs.keys(), ['']*seq_num))
