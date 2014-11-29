@@ -57,9 +57,7 @@ interleave datatype=DNA gap= -;
 matrix
 ''' % (n, l)
     for name in seqs:
-        seq = seqs[name]
-        formatted_name = name.ljust(20)
-        content += '%s%s\n' % (formatted_name, seq)
+        content += '%s%s\n' % (name.ljust(20), seqs[name])
     content += ''';
 END;
 '''
@@ -72,16 +70,15 @@ def gen_phy_file(seqs):
     l = len(list(seqs.values())[0])
     content = '%d %d\n' % (n, l)
     for name in seqs:
-        seq = seqs[name]
-        formatted_name = name.ljust(10)
-        content += '%s%s\n' % (formatted_name, seq)
+        content += '%s%s\n' % (name.ljust(10), seqs[name])
     return content
+
 
 # Generate mega file
 def gen_meg_file(seqs):
     content = '#Mega\ntitle Seqs\n\n'
-    for n in seqs:
-        content += '#%s\n%s\n' % (n, seqs[n])
+    for name in seqs:
+        content += '#%s\n%s\n' % (name, seqs[name])
     return content
 
 
@@ -89,8 +86,7 @@ def gen_meg_file(seqs):
 def gen_seq_file(seqs):
     content = ''
     for name in seqs:
-        seq = seqs[name]
-        content += '%s%s\n' % (name.ljust(10), seq)
+        content += '%s%s\n' % (name.ljust(10), seqs[name])
     return content
 
 
@@ -98,9 +94,9 @@ def gen_seq_file(seqs):
 def gen_fas_file(seqs):
     content = ''
     for name in seqs:
-        seq = seqs[name]
-        content += '>%s\n%s\n' % (name, seq)
+        content += '>%s\n%s\n' % (name, seqs[name])
     return content
+
 
 # Write formatted sequences file
 def write_file(file_type, file_name, seqs):
